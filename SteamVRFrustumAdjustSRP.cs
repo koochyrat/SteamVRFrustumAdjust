@@ -1,6 +1,10 @@
 ﻿using UnityEngine;
-using UnityEngine.Rendering;
 using Valve.VR;
+#if UNITY_2018
+using UnityEngine.Experimental.Rendering;
+#else
+using UnityEngine.Rendering;
+#endif
 
 //Place this script on the Camera (eye) object.
 //for canted headsets like pimax, calculate proper culling matrix to avoid objects being culled too early at far edges
@@ -14,8 +18,11 @@ public class SteamVRFrustumAdjustSRP : MonoBehaviour
 
     void OnEnable()
     {
+#if UNITY_2018
+        RenderPipeline.beginCameraRendering += RenderPipeline_beginCameraRendering;
+#else
         RenderPipelineManager.beginCameraRendering += RenderPipelineManager_beginCameraRendering;
-
+#endif
         m_Camera = GetComponent<Camera>();
         HmdMatrix34_t eyeToHeadL = SteamVR.instance.hmd.GetEyeToHeadTransform(EVREye.Eye_Left);
         if (eyeToHeadL.m0 < 1)  //m0 = 1 for parallel projections
@@ -46,8 +53,11 @@ public class SteamVRFrustumAdjustSRP : MonoBehaviour
 
     void OnDisable()
     {
+#if UNITY_2018
+        RenderPipeline.beginCameraRendering -= RenderPipeline_beginCameraRendering;
+#else
         RenderPipelineManager.beginCameraRendering -= RenderPipelineManager_beginCameraRendering;
-
+#endif
         if (isCantedFov)
         {
             isCantedFov = false;
@@ -55,7 +65,11 @@ public class SteamVRFrustumAdjustSRP : MonoBehaviour
         }
     }
 
+#if UNITY_2018
+    private void RenderPipeline_beginCameraRendering(Camera camera)
+#else
     private void RenderPipelineManager_beginCameraRendering(ScriptableRenderContext context, Camera camera)
+#endif
     {
         if (isCantedFov)
         {
