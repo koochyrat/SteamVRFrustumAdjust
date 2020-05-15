@@ -5,7 +5,7 @@ It is a general fix for all headsets with canted displays in non-parallel projec
 
 In addition, due to the canting, the vertical FOV is not constant and actually increases towards the outer edges. See https://risa2000.github.io/vrdocs/docs/hmd_fov_calculation.html for explanation. This increased vertical FOV needs to be accounted for in calculating the culling matrix otherwise premature culling will happen at the top/bottom corners near the outer edges as well.
 
-To use this fix, just add the appropriate SteamVRFrustumAdjust script to your eye camera, SRP version if you are using HDRP/URP, or normal for the built-in renderer. The proper culling matrix for both horizontal and vertical FOV will be calculated and then applied on each frame when it is enabled.
+To use this fix, just add the appropriate SteamVRFrustumAdjust script to your eye camera, SRP version if you are using HDRP/URP, or normal for the built-in renderer. The proper culling matrix for both horizontal and vertical FOV will be calculated and then applied on each frame when it is enabled. You do not have to check for Pimax hardware, the script will automatically activate if it detects a canted view. So far the Pimax, Index in non parallel projection mode, and HP Reverb can have canting.
 
 I have submitted a bug report to Unity, but their response is that they will not fix it as Pimax is not a supported headset and they have no plans to support it. So this is the only way to fix it for the foreseeable future.  
 
