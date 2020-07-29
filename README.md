@@ -13,5 +13,8 @@ Additional files are included in this repository where all the math stuff was do
 
 Special thanks to risa2000 for help https://risa2000.github.io/hmdgdb/
 
-Check out dmel642's Boneworks patch using this code:
+StarVR's official fix using this code:
+https://www.starvr.com/developers_stage/7/30/
+
+dmel642's Boneworks patch using this code:
 https://github.com/dmel642/BoneworksCullingFix
