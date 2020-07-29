@@ -12,3 +12,6 @@ I have submitted a bug report to Unity, but their response is that they will not
 Additional files are included in this repository where all the math stuff was done to derive the vertical culling FOV just for reference.
 
 Special thanks to risa2000 for help https://risa2000.github.io/hmdgdb/
+
+Check out dmel642's Boneworks patch using this code:
+https://github.com/dmel642/BoneworksCullingFix
