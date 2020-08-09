@@ -40,7 +40,7 @@ namespace Kch
                 }
             }
             m_Camera = GetComponent<Camera>();
-            HmdMatrix34_t eyeToHeadL = FnTable.GetEyeToHeadTransform(0);
+            HmdMatrix34_t eyeToHeadL = FnTable.GetEyeToHeadTransform(EVREye.Eye_Left);
             if (eyeToHeadL.m0 < 1)  //m0 = 1 for parallel projections
             {
                 isCantedFov = true;
