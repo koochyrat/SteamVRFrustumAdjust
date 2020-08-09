@@ -5,7 +5,31 @@ It is a general fix for all headsets with canted displays in non-parallel projec
 
 In addition, due to the canting, the vertical FOV is not constant and actually increases towards the outer edges. See https://risa2000.github.io/vrdocs/docs/hmd_fov_calculation.html for explanation. This increased vertical FOV needs to be accounted for in calculating the culling matrix otherwise premature culling will happen at the top/bottom corners near the outer edges as well.
 
-To use this fix, just add the appropriate SteamVRFrustumAdjust script to your eye camera, SRP version if you are using HDRP/URP, or normal for the built-in renderer. The proper culling matrix for both horizontal and vertical FOV will be calculated and then applied on each frame when it is enabled. You do not have to check for Pimax hardware, the script will automatically activate if it detects a canted view. So far the Pimax, StarVR, Index in non parallel projection mode, and HP Reverb can have canting.
+<h2>How to use</h2>
+
+<b>Built-in renderer legacy OpenVR Single Pass, Single Pass Instanced or Multi Pass:</b>
+Add SteamVRFrustumAdjust.cs script to your eye camera
+
+<b>Built-in renderer Unity XR Single Pass Instanced:</b>
+Add SteamVRFrustumAdjust.cs script to your eye camera
+
+<b>Built-in renderer Unity XR Multi pass:</b>
+No fix necessary as Unity uses two cameras for culling
+
+<b>HDRP/URP renderer legacy OpenVR Single Pass or Single Pass Instanced:</b>
+Add SteamVRFrustumAdjustSRP.cs script to your eye camera
+
+<b>HDRP/URP renderer legacy OpenVR Multi pass:</b>
+No fix available yet. Premature culling happens on right eye side only
+
+<b>HDRP/URP renderer Unity XR Single Pass Instanced:</b>
+Add SteamVRFrustumAdjustSRP.cs script to your eye camera
+
+<b>HDRP/URP renderer Unity XR Multi pass:</b>
+No fix available yet. Premature culling happens on right eye side only
+
+
+When the camera is enabled, the proper culling matrix for both horizontal and vertical FOV will be calculated and then applied on each frame when it is enabled. You do not have to check for Pimax hardware, the script will automatically activate if it detects a canted view. So far the Pimax, StarVR, Index in non parallel projection mode, and HP Reverb can have canting.
 
 I have submitted a bug report to Unity, but their response is that they will not fix it as Pimax is not a supported headset and they have no plans to support it. So this is the only way to fix it for the foreseeable future.  
 
@@ -16,5 +40,5 @@ Special thanks to risa2000 for help https://risa2000.github.io/hmdgdb/
 StarVR's official fix using this code:
 https://www.starvr.com/developers_stage/7/30/
 
-dmel642's Boneworks patch using this code:
-https://github.com/dmel642/BoneworksCullingFix
+dmel642's Unity game mods using this code:
+https://github.com/dmel642/UnityCullingFix
