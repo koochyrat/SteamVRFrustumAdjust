@@ -10,10 +10,10 @@ In addition, due to the canting, the vertical FOV is not constant and actually i
 <b>Built-in renderer legacy OpenVR Single Pass, Single Pass Instanced or Multi Pass:</b>
 Add SteamVRFrustumAdjust.cs script to your eye camera
 
-<b>Built-in renderer Unity XR Single Pass Instanced:</b>
+<b>Built-in renderer Unity XR OpenVR Single Pass Instanced:</b>
 Add SteamVRFrustumAdjust.cs script to your eye camera
 
-<b>Built-in renderer Unity XR Multi pass:</b>
+<b>Built-in renderer Unity XR OpenVR Multi pass:</b>
 No fix necessary as Unity uses two cameras for culling
 
 <b>HDRP/URP renderer legacy OpenVR Single Pass or Single Pass Instanced:</b>
@@ -22,10 +22,10 @@ Add SteamVRFrustumAdjustSRP.cs script to your eye camera
 <b>HDRP/URP renderer legacy OpenVR Multi pass:</b>
 No fix available yet. Premature culling happens on right eye side only
 
-<b>HDRP/URP renderer Unity XR Single Pass Instanced:</b>
+<b>HDRP/URP renderer Unity XR OpenVR Single Pass Instanced:</b>
 Add SteamVRFrustumAdjustSRP.cs script to your eye camera
 
-<b>HDRP/URP renderer Unity XR Multi pass:</b>
+<b>HDRP/URP renderer Unity XR OpenVR Multi pass:</b>
 No fix available yet. Premature culling happens on right eye side only
 
 
