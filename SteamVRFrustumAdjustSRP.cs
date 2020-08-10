@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using Valve.VR;
-using UnityEngine.Rendering.Universal;
 using UnityEngine.XR;
 #if UNITY_2018
 using UnityEngine.Experimental.Rendering;
