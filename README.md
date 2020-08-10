@@ -16,17 +16,11 @@ In addition, due to the canting, the vertical FOV is not constant and actually i
 <b>Built-in renderer Unity XR OpenVR Multi pass:</b>
 <br>No fix necessary as Unity uses two cameras for culling
 
-<b>HDRP/URP renderer legacy OpenVR Single Pass or Single Pass Instanced:</b>
+<b>HDRP/URP renderer legacy OpenVR Single Pass, Single Pass Instanced or Multi Pass:</b>
 <br>Add SteamVRFrustumAdjustSRP.cs script to your eye camera
 
-<b>HDRP/URP renderer legacy OpenVR Multi pass:</b>
-<br>No fix available yet. Premature culling happens on right eye side only
-
-<b>HDRP/URP renderer Unity XR OpenVR Single Pass Instanced:</b>
+<b>HDRP/URP renderer Unity XR OpenVR Single Pass Instanced or Multi Pass:</b>
 <br>Add SteamVRFrustumAdjustSRP.cs script to your eye camera
-
-<b>HDRP/URP renderer Unity XR OpenVR Multi pass:</b>
-<br>No fix available yet. Premature culling happens on right eye side only
 
 
 When the camera is enabled, the proper culling matrix for both horizontal and vertical FOV will be calculated and then applied on each frame when it is enabled. You do not have to check for Pimax hardware, the script will automatically activate if it detects a canted view. So far the Pimax, StarVR, Index in non parallel projection mode, and HP Reverb can have canting.
