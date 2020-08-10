@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using Valve.VR;
+using UnityEngine.Rendering.Universal;
+using UnityEngine.XR;
 #if UNITY_2018
 using UnityEngine.Experimental.Rendering;
 #else
@@ -23,6 +25,7 @@ public class SteamVRFrustumAdjustSRP : MonoBehaviour
 #else
         RenderPipelineManager.beginCameraRendering += RenderPipelineManager_beginCameraRendering;
 #endif
+        bool isMultipass = (XRSettings.stereoRenderingMode == XRSettings.StereoRenderingMode.MultiPass);
         m_Camera = GetComponent<Camera>();
         HmdMatrix34_t eyeToHeadL = SteamVR.instance.hmd.GetEyeToHeadTransform(EVREye.Eye_Left);
         if (eyeToHeadL.m0 < 1)  //m0 = 1 for parallel projections
@@ -31,6 +34,7 @@ public class SteamVRFrustumAdjustSRP : MonoBehaviour
             float l_left = 0.0f, l_right = 0.0f, l_top = 0.0f, l_bottom = 0.0f;
             SteamVR.instance.hmd.GetProjectionRaw(EVREye.Eye_Left, ref l_left, ref l_right, ref l_top, ref l_bottom);
             float eyeYawAngle = Mathf.Acos(eyeToHeadL.m0);  //since there are no x or z rotations, this is y only. 10 deg on Pimax
+            if (isMultipass) eyeYawAngle *= 2;  //for multipass left eye frustum is used twice? causing right eye to end up 20 deg short
             float eyeHalfFov = Mathf.Atan(SteamVR.instance.tanHalfFov.x);
             float tanCorrectedEyeHalfFovH = Mathf.Tan(eyeYawAngle + eyeHalfFov);
 
