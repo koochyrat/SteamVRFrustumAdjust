@@ -35,3 +35,6 @@ https://www.starvr.com/developers_stage/7/30/
 
 dmel642's Unity game mods using this code:
 https://github.com/dmel642/UnityCullingFix
+
+My Subnautica: Below Zero mod with this fix:
+https://github.com/koochyrat/VRPimaxTweaks
