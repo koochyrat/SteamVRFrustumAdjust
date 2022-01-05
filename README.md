@@ -1,4 +1,4 @@
-# SteamVRFrustumAdjust
+# OpenXRFrustumAdjust / SteamVRFrustumAdjust
 For canted headsets like Pimax, calculate proper culling matrix to avoid objects being culled too early at far edges in Unity. Prevents objects popping in and out of view.
 
 It is a general fix for all headsets with canted displays in non-parallel projection mode. The cause is that Unity calculates the culling matrices without accounting for the eye rotation angle, causing the horizontal FOV to come up 20 degrees short in the case of Pimax.
