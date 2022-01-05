@@ -56,7 +56,7 @@ public class OpenXRFrustumAdjust : MonoBehaviour
 
                 //because of canting, vertical fov increases towards the corners. calculate the new maximum fov otherwise culling happens too early at corners
                 float eyeFovLeft = -leftView.fov.angleLeft;
-                float tanCorrectedEyeHalfFovV = MathF.Tan(halfFov.y) * Mathf.Cos(eyeFovLeft) / Mathf.Cos(eyeFovLeft + eyeYawAngle);
+                float tanCorrectedEyeHalfFovV = Mathf.Tan(halfFov.y) * Mathf.Cos(eyeFovLeft) / Mathf.Cos(eyeFovLeft + eyeYawAngle);
                 projectionMatrix.m11 = 1 / tanCorrectedEyeHalfFovV;   //m11 = 0.3969 for Pimax
 
                 //set the near and far clip planes
