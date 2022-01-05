@@ -8,11 +8,7 @@ using UnityEngine.XR.OpenXR.Features;
 #if UNITY_EDITOR
 using UnityEditor.XR.OpenXR.Features;
 #endif
-#if UNITY_2018
-using UnityEngine.Experimental.Rendering;
-#else
 using UnityEngine.Rendering;
-#endif
 
 //Place this script on the Camera (eye) object.
 //for canted headsets like pimax, calculate proper culling matrix to avoid objects being culled too early at far edges
@@ -39,11 +35,7 @@ public class OpenXRFrustumAdjust : MonoBehaviour
         if(!isInit && OpenXRNativeWrapper.isInit)
         {
 
-#if UNITY_2018
-            RenderPipeline.beginCameraRendering += RenderPipeline_beginCameraRendering;
-#else
             RenderPipelineManager.beginCameraRendering += RenderPipelineManager_beginCameraRendering;
-#endif
 
             leftView = OpenXRNativeWrapper.views[0];
             rightView = OpenXRNativeWrapper.views[1];
@@ -81,11 +73,8 @@ public class OpenXRFrustumAdjust : MonoBehaviour
 
     void OnDisable()
     {
-#if UNITY_2018
-        RenderPipeline.beginCameraRendering -= RenderPipeline_beginCameraRendering;
-#else
         RenderPipelineManager.beginCameraRendering -= RenderPipelineManager_beginCameraRendering;
-#endif
+
         if (isCantedFov)
         {
             isCantedFov = false;
@@ -103,11 +92,7 @@ public class OpenXRFrustumAdjust : MonoBehaviour
     }
 
     //below is for URP/HDRP. need to call OnPreCull manually
-#if UNITY_2018
-    private void RenderPipeline_beginCameraRendering(Camera camera)
-#else
     private void RenderPipelineManager_beginCameraRendering(ScriptableRenderContext context, Camera camera)
-#endif
     {
         OnPreCull();
     }
