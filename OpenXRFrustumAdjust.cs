@@ -45,9 +45,9 @@ public class OpenXRFrustumAdjust : MonoBehaviour
                 isCantedFov = true;
                 Vector2 halfFov = new Vector2(
                     Mathf.Max(-leftView.fov.angleLeft, leftView.fov.angleRight, -rightView.fov.angleLeft, rightView.fov.angleRight),
-                    Mathf.Max(-leftView.fov.angleUp, leftView.fov.angleDown, -rightView.fov.angleUp, rightView.fov.angleDown)
+                    Mathf.Max(leftView.fov.angleUp, -leftView.fov.angleDown, rightView.fov.angleUp, -rightView.fov.angleDown)
                 );
-                float eyeYawAngle = leftRot.y;
+                float eyeYawAngle = leftRot.y * Mathf.Deg2Rad;
                 float eyeHalfFov = halfFov.x;
                 float tanCorrectedEyeHalfFovH = Mathf.Tan(eyeYawAngle + eyeHalfFov);
 
