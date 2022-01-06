@@ -33,7 +33,7 @@ When the camera is enabled, the proper culling matrix for both horizontal and ve
 
 I have submitted a bug report to Unity, but their response is that they will not fix it as Pimax is not a supported headset and they have no plans to support it. So this is the only way to fix it for the foreseeable future.  
 
-The OpenXRFrustumAdjust.cs file also contains an OpenXRNativeWrapper class that shows how to call any OpenXR function natively in Unity by getting the function address.
+The OpenXRNativeWrapper class that shows how to call any OpenXR function natively in Unity by getting the function address.
 
 Additional files are included in this repository where all the math stuff was done to derive the vertical culling FOV just for reference.
 
